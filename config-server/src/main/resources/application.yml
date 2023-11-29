@@ -1,0 +1,28 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: configserver
+  security:
+    user:
+      name: user
+      password: ${JASYPT_ENCRYPTOR_PASSWORD}
+  cloud:
+    config:
+      server:
+        git:
+          default-label: main
+          uri: https://github.com/BerkantDuman/spring-cloud-config-repository
+          username: BerkantDuman
+          password: ***
+          clone-on-start: true
+    fast-fail: true
+
+
+
+logging:
+  level:
+    ROOT: INFO
+    org.spring.framework.cloud.config: DEBUG
+    org.springframework.cache: TRACE

@@ -18,6 +18,7 @@
         <module>app-config-data</module>
         <module>kafka</module>
         <module>common-config</module>
+        <module>config-server</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -31,12 +32,22 @@
         <spring-kafka.version>3.1.0</spring-kafka.version>
         <spring-retry.version>2.0.4</spring-retry.version>
         <kafka-avro-serializer.version>7.4.0</kafka-avro-serializer.version>
+        <spring-cloud.version>2023.0.0-RC1</spring-cloud.version>
+        <spring-actuator.version>3.2.0</spring-actuator.version>
     </properties>
 
     <repositories>
         <repository>
             <id>confluent</id>
             <url>https://packages.confluent.io/maven/</url>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
     </repositories>
 
@@ -56,6 +67,11 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-webflux</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
             <dependency>
@@ -108,6 +124,18 @@
                 <groupId>org.springframework.retry</groupId>
                 <artifactId>spring-retry</artifactId>
                 <version>${spring-retry.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+                <version>${spring-actuator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>io.confluent</groupId>
