@@ -5,14 +5,14 @@ apt-get update -y
 
 yes | apt-get install curl
 
-curlResult=$(curl -s -o /dev/null -I -w "%{http_code}" http://config-server:8888/actuator/health)
+curlResult=$(curl --location --silent --request GET -o /dev/null -I -w "%{http_code}" 'http://config-server:8888/actuator/health')
 
 echo "result status code:" "$curlResult"
 
 while [[ ! $curlResult == "200" ]]; do
-  >&2 echo "Config server is not up yet!"
+  >&2 echo "Config server is not up yet!" "$curlResult"
   sleep 2
-  curlResult=$(curl -s -o /dev/null -I -w "%{http_code}" http://config-server:8888/actuator/health)
+  curlResult=$(curl --location --silent --request GET -o /dev/null -I -w "%{http_code}" 'http://config-server:8888/actuator/health')
 done
 
-./cnb/lifecycle/launcher
+echo "result status code:" "$curlResult"

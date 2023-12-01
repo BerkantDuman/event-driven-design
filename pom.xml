@@ -19,6 +19,7 @@
         <module>kafka</module>
         <module>common-config</module>
         <module>config-server</module>
+        <module>kafka-to-elastic-service</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -98,6 +99,11 @@
             <dependency>
                 <groupId>com.microservices.demo</groupId>
                 <artifactId>common-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.microservices.demo</groupId>
+                <artifactId>kafka-consumer</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
