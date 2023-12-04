@@ -1,6 +1,7 @@
 package com.microservices.demo.elastic.query.service.config;
 
 import com.microservices.demo.config.UserConfigData;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -10,6 +11,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
+
+import java.util.Arrays;
 
 @EnableWebSecurity
 @Configuration
@@ -21,10 +26,16 @@ public class WebSecurityConfig {
         this.userConfigData = userConfigData;
     }
 
+
+    @Value("${security.paths-to-ignore}")
+    private String[] pathsToIgnore;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
+                        .requestMatchers(Arrays.stream(pathsToIgnore).map(AntPathRequestMatcher::new).toList().toArray(new RequestMatcher[]{}))
+                        .permitAll()
                         .requestMatchers(HttpMethod.GET, "/**")
                         .hasRole("USER")
                         .anyRequest().authenticated()

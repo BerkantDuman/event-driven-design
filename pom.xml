@@ -39,6 +39,7 @@
         <spring-cloud.version>2023.0.0-RC1</spring-cloud.version>
         <spring-actuator.version>3.2.0</spring-actuator.version>
         <elastic.version>7.17.15</elastic.version>
+        <springdoc-openapi.version>2.3.0</springdoc-openapi.version>
     </properties>
 
     <repositories>
@@ -187,6 +188,11 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc-openapi.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.confluent</groupId>
