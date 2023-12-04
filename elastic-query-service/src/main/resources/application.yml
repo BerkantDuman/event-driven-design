@@ -1,0 +1,17 @@
+logging:
+  level:
+    ROOT: DEBUG
+    com.microservices.demo: DEBUG
+
+spring:
+  application:
+    name: elastic-query-service
+  profiles:
+    active: elastic_query
+  config:
+    import: 'configserver:'
+  cloud:
+    config:
+      name: elastic-query-service,config-client
+      username: user
+      password: ${JASYPT_ENCRYPTOR_PASSWORD}
