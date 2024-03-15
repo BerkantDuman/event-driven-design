@@ -4,6 +4,7 @@ services:
     platform: linux/amd64
     image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION:-latest}
     hostname: elastic-1
+    container_name: elastic-1
     environment:
       - node.name=elastic-1
       - cluster.name=es-twitter-cluster
@@ -22,6 +23,7 @@ services:
     networks:
       - ${GLOBAL_NETWORK:-elastic}
   elastic-2:
+    container_name: elastic-2
     platform: linux/amd64
     image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
     environment:
@@ -40,6 +42,7 @@ services:
     networks:
       - ${GLOBAL_NETWORK:-elastic}
   elastic-3:
+    container_name: elastic-3
     platform: linux/amd64
     image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
     environment:

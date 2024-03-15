@@ -15,3 +15,8 @@ spring:
       name: elastic-query-service,config-client
       username: user
       password: ${JASYPT_ENCRYPTOR_PASSWORD}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-service-1:8761/eureka/, http://discovery-service-2:8762/eureka/
