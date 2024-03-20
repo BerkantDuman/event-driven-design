@@ -14,8 +14,8 @@ spring:
         git:
           default-label: main
           uri: https://github.com/BerkantDuman/spring-cloud-config-repository
-          username: BerkantDuman
-          password: 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
+          username: ****
+          password: ****
           clone-on-start: true
     fast-fail: true
 
