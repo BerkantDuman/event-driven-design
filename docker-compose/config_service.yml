@@ -1,6 +1,7 @@
 version: '3.7'
 services:
   config-server:
+    user: root
     image: ${GROUP_ID}/config.server:${SERVICE_VERSION:-latest}
     ports:
       - "5006:5006"

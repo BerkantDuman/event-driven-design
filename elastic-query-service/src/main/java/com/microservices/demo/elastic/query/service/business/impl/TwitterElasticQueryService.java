@@ -8,9 +8,11 @@ import com.microservices.demo.elastic.query.service.model.assembler.ElasticQuery
 import com.microservices.demo.elastic.query.service.transformer.ElasticToResponseModelTransformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TwitterElasticQueryService implements ElasticQueryService {
     private static final Logger LOG = LoggerFactory.getLogger(TwitterElasticQueryService.class);
 

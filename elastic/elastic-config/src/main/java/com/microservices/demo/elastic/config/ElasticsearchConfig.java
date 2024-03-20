@@ -19,7 +19,7 @@ public class ElasticsearchConfig extends ElasticsearchConfiguration {
     @Override
     public ClientConfiguration clientConfiguration() {
         return ClientConfiguration.builder()
-                .connectedTo(elasticConfigData.getConnectionUrl())
+                .connectedTo("localhost:9200")
                 .withConnectTimeout(elasticConfigData.getConnectTimeoutMs())
                 .withSocketTimeout(elasticConfigData.getSocketTimeoutMs())
                 .build();
