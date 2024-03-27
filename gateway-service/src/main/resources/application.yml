@@ -1,20 +1,19 @@
-logging:
-  level:
-    ROOT: DEBUG
-    com.microservices.demo: DEBUG
-
 spring:
   application:
-    name: elastic-query-service
+    name: gateway-service
   profiles:
-    active: elastic_query
+    active: gateway
   config:
     import: optional:configserver:http://localhost:8888
   cloud:
     config:
-      name: elastic-query-service,config-client
+      name: gateway-service,config-client
       username: user
       password: ${JASYPT_ENCRYPTOR_PASSWORD}
+
+server:
+  port: 9090
+
 
 eureka:
   client:
@@ -23,3 +22,6 @@ eureka:
   instance:
     lease-expiration-duration-in-seconds: 5
     lease-renewal-interval-in-seconds: 2
+
+log:
+  app-name: gateway-service

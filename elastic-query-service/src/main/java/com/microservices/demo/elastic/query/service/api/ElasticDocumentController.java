@@ -71,7 +71,6 @@ public class ElasticDocumentController {
         return ResponseEntity.ok(elasticQueryServiceResponseModel);
     }
 
-    @PreAuthorize("hasRole('APP_USER_ROLE') || hasAuthority('SCOPE_APP_USER_ROLE')")
     @Operation(summary = "Get document by text.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successful response.", content = {

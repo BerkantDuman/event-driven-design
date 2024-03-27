@@ -47,7 +47,8 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(requests -> requests.requestMatchers(
+        http.authorizeHttpRequests(requests ->
+                        requests.requestMatchers(
                                 Arrays.stream(pathsToIgnore)
                                         .map(AntPathRequestMatcher::new)
                                         .toList().toArray(new RequestMatcher[]{}))
