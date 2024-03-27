@@ -11,9 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ElasticQueryServiceRequestModel {
-    private Long id;
-    private Long userId;
+    private String id;
     @NotEmpty
     private String text;
-    private String text2;
 }

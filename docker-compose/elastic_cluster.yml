@@ -1,9 +1,9 @@
 version: '3.7'
 services:
   elastic-1:
-    platform: linux/amd64
     image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION:-latest}
     hostname: elastic-1
+    container_name: elastic-1
     environment:
       - node.name=elastic-1
       - cluster.name=es-twitter-cluster
@@ -16,13 +16,13 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - data01_7_17_4_new:/usr/share/elasticsearch/data
+      - data01_7_17_18_new:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
     networks:
       - ${GLOBAL_NETWORK:-elastic}
   elastic-2:
-    platform: linux/amd64
+    container_name: elastic-2
     image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
     environment:
       - node.name=elastic-2
@@ -36,11 +36,11 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - data02_7_17_4_new:/usr/share/elasticsearch/data
+      - data02_7_17_18_new:/usr/share/elasticsearch/data
     networks:
       - ${GLOBAL_NETWORK:-elastic}
   elastic-3:
-    platform: linux/amd64
+    container_name: elastic-3
     image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
     environment:
       - node.name=elastic-3
@@ -54,14 +54,14 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - data03_7_17_4_new:/usr/share/elasticsearch/data
+      - data03_7_17_18_new:/usr/share/elasticsearch/data
     networks:
       - ${GLOBAL_NETWORK:-elastic}
 
 volumes:
-  data01_7_17_4_new:
+  data01_7_17_18_new:
     driver: local
-  data02_7_17_4_new:
+  data02_7_17_18_new:
     driver: local
-  data03_7_17_4_new:
+  data03_7_17_18_new:
     driver: local
