@@ -12,8 +12,19 @@ spring:
       password: ${JASYPT_ENCRYPTOR_PASSWORD}
 
 server:
-  port: 9090
+  port: 9092
 
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure.include: health, prometheus, gateway
+      path-mapping.prometheus: metrics
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      cache.time-to-live: 1ms
 
 eureka:
   client:
