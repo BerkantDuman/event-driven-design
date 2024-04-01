@@ -17,6 +17,7 @@ public class GatewayRouteLocator {
         return new RedisRateLimiter(5, 10);
     }
 
+    //TODO: Manage this configurations over application.properties.yml
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
